@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
 import 'package:tech_blog/my_colors.dart';
 
@@ -9,6 +10,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    double bodyMargin = size.width / 10;
 
     return SafeArea(
       child: Scaffold(
@@ -97,19 +99,50 @@ class MainScreen extends StatelessWidget {
                     )),
               ],
             ),
+
+            const SizedBox(
+              height: 8,
+            ),
             // لیست هشتگ ها
             SizedBox(
-              height: 100,
+              height: 60,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5,
+                  itemCount: tagList.length,
                   itemBuilder: ((context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.fromLTRB(
+                          0, 8, index == 0 ? bodyMargin : 15, 8),
                       child: Container(
-                        color: Colors.black,
-                        height: 20,
-                        width: 40,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          gradient: LinearGradient(
+                              colors: GradientColors.tags,
+                              begin: Alignment.centerRight,
+                              end: Alignment.centerLeft),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.crop_square,
+                                color: Colors.blue,
+                                size: 12,
+                              ),
+                              // const Image(
+                              //     image:
+                              //         AssetImage('assets/icons/hashtagicon.png')),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text(tagList[index].title,
+                                  style: const TextStyle(
+                                      fontSize: 17, color: Colors.white))
+                            ],
+                          ),
+                        ),
                       ),
                     );
                   })),
