@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
 import 'package:tech_blog/my_colors.dart';
+import 'package:tech_blog/my_strings.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -18,6 +19,7 @@ class MainScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+              // AppBar section
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -126,14 +128,11 @@ class MainScreen extends StatelessWidget {
                           padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
                           child: Row(
                             children: [
-                              const Icon(
-                                Icons.crop_square,
-                                color: Colors.blue,
-                                size: 12,
+                              const ImageIcon(
+                                AssetImage('assets/icons/hashtagicon.png'),
+                                color: Colors.white,
+                                size: 16,
                               ),
-                              // const Image(
-                              //     image:
-                              //         AssetImage('assets/icons/hashtagicon.png')),
                               const SizedBox(
                                 width: 8,
                               ),
@@ -146,6 +145,60 @@ class MainScreen extends StatelessWidget {
                       ),
                     );
                   })),
+            ),
+
+            const SizedBox(
+              height: 38,
+            ),
+
+            // طراحی قسمت وسط صفحه / see hotest blogs
+            Padding(
+              padding: EdgeInsets.only(right: bodyMargin, bottom: 8),
+              child: const Row(
+                children: [
+                  ImageIcon(
+                    AssetImage('assets/icons/blue_pen.png'),
+                    color: Colors.blue,
+                  ),
+                  // Icon(
+                  //   Icons.add_box_rounded,
+                  //   color: Colors.blue,
+                  //   size: 35,
+                  // ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    MyStrings.viewHotestBlog,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.blue),
+                  ),
+                ],
+              ),
+            ),
+
+            //  تصاویر داغ ترین نوشته ها
+
+            Padding(
+              padding: EdgeInsets.only(right: bodyMargin),
+              child: SizedBox(
+                height: size.height / 4.1,
+                child: ListView.builder(
+                    itemCount: 7,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: ((context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 50,
+                          width: 100,
+                          color: Colors.blueAccent,
+                        ),
+                      );
+                    })),
+              ),
             )
           ],
         ),
