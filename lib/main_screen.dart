@@ -131,7 +131,7 @@ class MainScreen extends StatelessWidget {
                               const ImageIcon(
                                 AssetImage('assets/icons/hashtagicon.png'),
                                 color: Colors.white,
-                                size: 16,
+                                size: 12,
                               ),
                               const SizedBox(
                                 width: 8,
@@ -148,7 +148,7 @@ class MainScreen extends StatelessWidget {
             ),
 
             const SizedBox(
-              height: 38,
+              height: 25,
             ),
 
             // طراحی قسمت وسط صفحه / see hotest blogs
@@ -160,11 +160,6 @@ class MainScreen extends StatelessWidget {
                     AssetImage('assets/icons/blue_pen.png'),
                     color: Colors.blue,
                   ),
-                  // Icon(
-                  //   Icons.add_box_rounded,
-                  //   color: Colors.blue,
-                  //   size: 35,
-                  // ),
                   SizedBox(
                     width: 8,
                   ),
@@ -172,33 +167,110 @@ class MainScreen extends StatelessWidget {
                     MyStrings.viewHotestBlog,
                     style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w900,
                         color: Colors.blue),
                   ),
                 ],
               ),
             ),
 
-            //  تصاویر داغ ترین نوشته ها
-
-            Padding(
-              padding: EdgeInsets.only(right: bodyMargin),
-              child: SizedBox(
-                height: size.height / 4.1,
-                child: ListView.builder(
-                    itemCount: 7,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: ((context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 50,
-                          width: 100,
-                          color: Colors.blueAccent,
-                        ),
-                      );
-                    })),
-              ),
+            //  تصاویر داغ ترین نوشته ها / blog list
+            SizedBox(
+              height: size.height / 3.5,
+              child: ListView.builder(
+                  itemCount: blogList.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: ((context, index) {
+                    // blog items
+                    return Padding(
+                      padding:
+                          EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              height: size.height / 5.3,
+                              width: size.width / 2.4,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(16)),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            blogList[index].imageUrl),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    // لایه گرادیانت روی عکس
+                                    foregroundDecoration: const BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(16)),
+                                      gradient: LinearGradient(
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          colors: GradientColors.blogPost),
+                                    ),
+                                  ),
+                                  //  متن روی گرادیانت و عکس
+                                  Positioned(
+                                      bottom: 8,
+                                      left: 0,
+                                      right: 0,
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                blogList[index].writer,
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.normal),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(blogList[index].views,
+                                                      style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight: FontWeight
+                                                              .normal)),
+                                                  const SizedBox(
+                                                    width: 8,
+                                                  ),
+                                                  const Icon(
+                                                    Icons.remove_red_eye,
+                                                    size: 16,
+                                                    color: Colors.white,
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: size.width / 2.4,
+                            child: Text(
+                              blogList[index].title,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w700, fontSize: 15),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  })),
             )
           ],
         ),
