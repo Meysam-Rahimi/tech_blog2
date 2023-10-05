@@ -273,3 +273,41 @@ List<BlogModel> blogList = [
       """,
       views: "256"),
 ];
+
+List<PodCastModel> podCastList = [
+  PodCastModel(
+      id: 1,
+      imageUrl:
+          "https://www.thesaurus.com/e/wp-content/uploads/2021/11/20211104_articles_1000x700.png",
+      content: "برترین مقالات"),
+  PodCastModel(
+      id: 2,
+      imageUrl:
+          "https://www.feednovascotia.ca/sites/default/files/field/image/10-articles-blog.png",
+      content: "برترین مقالات"),
+  PodCastModel(
+      id: 3,
+      imageUrl:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQukr69I8QM5yld4n28M806ZaHdwLy5TJ-Idw&usqp=CAU",
+      content: "برترین مقالات"),
+  PodCastModel(
+      id: 4,
+      imageUrl:
+          "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2019/08/August-blog-header-Amplification.png",
+      content: "برترین مقالات"),
+  PodCastModel(
+      id: 5,
+      imageUrl:
+          "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2022/08/BMD-3398.png",
+      content: "برترین مقالات"),
+  PodCastModel(
+      id: 6,
+      imageUrl:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwee9bq7jBEGvY4rCTYwIQrbSNxPOA0e3WG5kMhn9R63xQnNyzZZ2rjKA3ovFif4DLI9U&usqp=CAU",
+      content: "برترین مقالات"),
+  PodCastModel(
+      id: 7,
+      imageUrl:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5GBogyl37bUek8l6XhT2XG0_O3LHvc3cqx0CvPvj5ELe9TG-50rPPW2VGph_c66eeu8M&usqp=CAU",
+      content: "برترین مقالات"),
+];
