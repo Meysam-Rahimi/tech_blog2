@@ -35,8 +35,10 @@ class MainScreen extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            Positioned.fill(
-                child: ProfileScreen(size: size, bodyMargin: bodyMargin)),
+            Center(
+              child: Positioned.fill(
+                  child: ProfileScreen(size: size, bodyMargin: bodyMargin)),
+            ),
 
             // bottom navigaton bar
             bottomNavigationBar(size: size, bodyMargin: bodyMargin),

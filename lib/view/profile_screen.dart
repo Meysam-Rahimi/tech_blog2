@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_blog/models/fake_data.dart';
 import 'package:tech_blog/my_colors.dart';
 import 'package:tech_blog/my_strings.dart';
+import 'package:tech_blog/view/my_component.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -15,22 +16,19 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 15,
-          ),
-          Image(
+          const Image(
             image: AssetImage('assets/images/profileAvatar.png'),
             height: 90,
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ImageIcon(
@@ -48,6 +46,53 @@ class ProfileScreen extends StatelessWidget {
                     color: Colors.blue),
               ),
             ],
+          ),
+          const SizedBox(
+            height: 60,
+          ),
+
+          const Text(
+            'Sami Rahimi',
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          const Text(
+            'datataday023@gmail.com',
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          // خط بین ردیف ها / divider
+          TechDivider(size: size),
+          InkWell(
+            onTap: (() {}),
+            splashColor: SolidColors.primaryColor,
+            child: const SizedBox(
+                height: 45, child: Center(child: Text(MyStrings.myFavPodcast))),
+          ),
+          TechDivider(size: size),
+          InkWell(
+            onTap: (() {}),
+            splashColor: SolidColors.primaryColor,
+            child: const SizedBox(
+                height: 45, child: Center(child: Text(MyStrings.myFavBlog))),
+          ),
+          TechDivider(size: size),
+          InkWell(
+            onTap: (() {}),
+            splashColor: SolidColors.primaryColor,
+            child: const SizedBox(
+                height: 45, child: Center(child: Text(MyStrings.logOut))),
+          ),
+          const SizedBox(
+            height: 60,
           ),
         ],
       ),
