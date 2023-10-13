@@ -20,8 +20,8 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 10),
-          homePagePoster(size: size),
-          const homePageTagList(),
+          HomePagePoster(size: size),
+          const HomePageTagList(),
           SizedBox(
             height: 60,
             child: ListView.builder(
@@ -65,13 +65,13 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(
             height: 25,
           ),
-          seeMoreBlog(bodyMargin: bodyMargin),
-          homePageBlogList(size: size, bodyMargin: bodyMargin),
+          SeeMoreBlog(bodyMargin: bodyMargin),
+          HomePageBlogList(size: size, bodyMargin: bodyMargin),
           const SizedBox(
             height: 10,
           ),
-          seeMorePodCast(bodyMargin: bodyMargin),
-          homePagePodcastList(size: size, bodyMargin: bodyMargin),
+          SeeMorePodCast(bodyMargin: bodyMargin),
+          HomePagePodcastList(size: size, bodyMargin: bodyMargin),
           const SizedBox(
             height: 60,
           ),
@@ -81,8 +81,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class homePagePodcastList extends StatelessWidget {
-  const homePagePodcastList({
+class HomePagePodcastList extends StatelessWidget {
+  const HomePagePodcastList({
     super.key,
     required this.size,
     required this.bodyMargin,
@@ -144,8 +144,8 @@ class homePagePodcastList extends StatelessWidget {
   }
 }
 
-class seeMorePodCast extends StatelessWidget {
-  const seeMorePodCast({
+class SeeMorePodCast extends StatelessWidget {
+  const SeeMorePodCast({
     super.key,
     required this.bodyMargin,
   });
@@ -176,8 +176,8 @@ class seeMorePodCast extends StatelessWidget {
   }
 }
 
-class homePageBlogList extends StatelessWidget {
-  const homePageBlogList({
+class HomePageBlogList extends StatelessWidget {
+  const HomePageBlogList({
     super.key,
     required this.size,
     required this.bodyMargin,
@@ -285,8 +285,8 @@ class homePageBlogList extends StatelessWidget {
   }
 }
 
-class seeMoreBlog extends StatelessWidget {
-  const seeMoreBlog({
+class SeeMoreBlog extends StatelessWidget {
+  const SeeMoreBlog({
     super.key,
     required this.bodyMargin,
   });
@@ -317,8 +317,8 @@ class seeMoreBlog extends StatelessWidget {
   }
 }
 
-class homePageTagList extends StatelessWidget {
-  const homePageTagList({
+class HomePageTagList extends StatelessWidget {
+  const HomePageTagList({
     super.key,
   });
 
@@ -330,8 +330,8 @@ class homePageTagList extends StatelessWidget {
   }
 }
 
-class homePagePoster extends StatelessWidget {
-  const homePagePoster({
+class HomePagePoster extends StatelessWidget {
+  const HomePagePoster({
     super.key,
     required this.size,
   });

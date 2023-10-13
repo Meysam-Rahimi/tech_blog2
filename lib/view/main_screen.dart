@@ -40,16 +40,14 @@ class _MainScreenState extends State<MainScreen> {
         ),
         body: Stack(
           children: [
-            Center(
-              child: Positioned.fill(
-                  child: IndexedStack(
-                index: selectedPageIndex,
-                children: [
-                  HomeScreen(size: size, bodyMargin: bodyMargin),
-                  ProfileScreen(size: size, bodyMargin: bodyMargin),
-                ],
-              )),
-            ),
+            Positioned.fill(
+                child: IndexedStack(
+              index: selectedPageIndex,
+              children: [
+                HomeScreen(size: size, bodyMargin: bodyMargin),
+                ProfileScreen(size: size, bodyMargin: bodyMargin),
+              ],
+            )),
 
             // bottom navigaton bar
             BottomNavigationBar(
