@@ -116,8 +116,8 @@ class MyApp extends StatelessWidget {
       // home
       home: const SafeArea(
         child: Scaffold(
-          // body: MainScreen(),
-          body: RegisterIntro(),
+          body: MainScreen(),
+          // body: RegisterIntro(),
         ),
       ),
     );

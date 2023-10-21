@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_blog/my_colors.dart';
 import 'package:tech_blog/view/home_screen.dart';
+import 'package:tech_blog/view/my_cats.dart';
 import 'package:tech_blog/view/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -9,6 +10,8 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class _MainScreenState extends State<MainScreen> {
   var selectedPageIndex = 0;
@@ -20,13 +23,71 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+        key: _key,
+        drawer: Drawer(
+          backgroundColor: SolidColors.scaffoldBg,
+          child: Padding(
+            padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                    child: Image.asset(
+                  ('assets/images/logo.png'),
+                  scale: 3,
+                )),
+                const ListTile(
+                  title: Text(
+                    'پروفایل کاربری',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                const ListTile(
+                  title: Text(
+                    "درباره تک بلاگ",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                const ListTile(
+                  title: Text(
+                    "اشتراک گزاری تک بلاگ",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                const ListTile(
+                  title: Text(
+                    "تک بلاگ در گیت هاب",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: SolidColors.scaffoldBg,
           elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Icon(Icons.menu, color: Colors.black),
+              InkWell(
+                onTap: (() {
+                  _key.currentState!.openDrawer();
+                }),
+                child: const Icon(Icons.menu, color: Colors.black),
+              ),
               Image(
                 height: size.height / 13.6,
                 image: const AssetImage("assets/images/logo.png"),
@@ -46,6 +107,7 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 HomeScreen(size: size, bodyMargin: bodyMargin),
                 ProfileScreen(size: size, bodyMargin: bodyMargin),
+                MyCats(size: size, bodyMargin: bodyMargin),
               ],
             )),
 
@@ -81,7 +143,7 @@ class BottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 8,
+      bottom: 12,
       right: 0,
       left: 0,
       child: Container(
@@ -113,7 +175,7 @@ class BottomNavigationBar extends StatelessWidget {
                         color: Colors.white,
                       )),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: (() => changeScreen(2)),
                       icon: const ImageIcon(
                         AssetImage(
                           'assets/icons/write.png',
